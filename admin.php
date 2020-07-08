@@ -66,7 +66,7 @@ if(!$conn){
 }
 ////////////////////////////////////////////////////////////////////////////////////
 if(isset($_POST['offers'])){
-$files = scandir("C:/xampp/htdocs/malegrooming/uploads");
+$files = scandir("./uploads");
 for($a = 2;$a <count($files);$a++){
   ?>
 <p> <?php echo $files[$a];?>
@@ -74,7 +74,7 @@ for($a = 2;$a <count($files);$a++){
     download</a>
   </p>
 
-<a href="delete.php?name=C:/xampp/htdocs/uploads/<?php echo $files[$a];?>" style="color:red;">
+<a href="delete.php?name=./uploads/<?php echo $files[$a];?>" style="color:red;">
   delete</a>
 <?php
 }}
@@ -334,38 +334,14 @@ if(isset($_POST['action'])){
     $res=mysqli_query($conn,$sqltb1);
     if(mysqli_num_rows($res)>0){
         while($row = mysqli_fetch_assoc($res)){
-      require('class.phpmailer.php');
-      require('class.smtp.php');
-      require('PHPMailerAutoload.php');
-      $mail = new PHPMailer;
-      $mail->SMTPDebug=0;
-      $mail->IsSMTP();                        // Set mailer to use SMTP
-      $mail->Host ='smtp.gmail.com';
-      $mail->Port = 587;
-      $mail->SMTPAuth = true;
-      ///////////////////
-      $mail->Username = 'onwardmalegrooming@gmail.com';
-
-      $mail->Password = 'Onward@123';
-      $mail->SMTPSecure = 'tls';
-      $mail->From = 'onwardmalegrooming@gmail.com';
-      $mail->FromName = 'OnWard';
-      $mail->AddAddress($row["email"]);
-      $mail->IsHTML(true);
-      $mail->Subject = 'appointment related response';
-      $mail->Body    = 'your appointment '.$row["userorder"].' at time '.$row["entry_time"].' on '.$row["entry_date"].' has been '.$orderaction;
-      $mail->AddAttachment("images/logo.jpg");
-      if(!$mail->Send()) {
-         echo 'Message could not be sent.';
-         echo 'Mailer Error: ' . $mail->ErrorInfo;
-         exit;
-      }}
-
-
-    $sqlt="UPDATE orders SET action='$orderaction' WHERE orderid='$orderid'";
+           $sqlt="UPDATE orders SET action='$orderaction' WHERE orderid='$orderid'";
     if(mysqli_query($conn,$sqlt)){
       echo "action updated successfully<br>";
     }
+     }
+
+
+   
   }else{
     echo "invalid order id";
   }
