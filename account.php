@@ -174,7 +174,7 @@ if(isset($_SESSION['username'])){
 </html>
 <?php
 if(isset($_POST['offers'])){
-  $files = scandir("C:/xampp/htdocs/malegrooming/uploads");
+  $files = scandir("./uploads");
   for($a = 2;$a <count($files);$a++){
     ?>
   <p> <?php echo $files[$a];?>
