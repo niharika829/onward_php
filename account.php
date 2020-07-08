@@ -87,7 +87,7 @@ if(isset($_SESSION['username'])){
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container" style="background-color:black;">
-                <a class="navbar-brand" href="home.php"style="color:white;"><img src="pic/<?php echo $img?>" style="border-radius:50%;" width=40% height=350% ></a>
+                <a class="navbar-brand" href="home.php"style="color:white;"><img src="pic/<?php echo $img?>" style="border-radius:50%;" width=20% height=350% ></a>
 
                 <div class="collapse navbar-collapse" id="ftco-nav" >
                           <ul class="nav navbar-nav" style="position:relative;left:30%;color:white;">
