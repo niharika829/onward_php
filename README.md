@@ -5,6 +5,3 @@
 
 # admin username:- root@root.com
 # admin password:- Root@123
-
-# check live website:-
-# https://onward38.000webhostapp.com/home.php
